@@ -9,85 +9,125 @@
 ## Project Overview
 
 ### Project Name
-[Your project name]
+DnD Text Game App with AI Dungeon Master
 
 ### Project Type
-[Story/Novel/Application/Website/Other]
+Application - Multi-agent AI-powered web/mobile game platform
 
 ### Description
-[Brief description of what this project is about]
+A D&D 3.5e text-based game application where AI agents assist as Dungeon Master or DM assistant. Players interact through text (voice planned for future), with the system managing character sheets, enforcing rules, and creating engaging adventures. The app supports both human and AI players, with flexible DM modes (AI-only or human DM with AI assistant).
 
 ---
 
 ## Main Objectives
 
 ### Primary Goal
-[What is the main thing you want to accomplish?]
+Create a fully functional backend system with specialized AI agents (Coordinator, DM Agent, Rules Engine, Player Agent, Persistence Agent) that can orchestrate a complete D&D 3.5e game session with proper rule enforcement, character management, and narrative generation.
 
 ### Secondary Goals
-- [Additional objective 1]
-- [Additional objective 2]
-- [Additional objective 3]
+- Implement adaptive organizational system for character sheets, stats, abilities, and history in human-editable markdown format
+- Build permission system allowing DMs to control player edit access
+- Create engaging, scalable adventures from local mysteries to world-bending campaigns
+- Support 1-6 players (human or AI) with flexible session setup
+- Enable real-time multiplayer through shareable links
+- Prepare architecture for future voice integration and cloud sync
 
 ---
 
 ## Success Criteria
 
 ### How will you know this project is successful?
-- [Criterion 1]
-- [Criterion 2]
-- [Criterion 3]
+- Backend agents can successfully orchestrate a complete combat encounter with proper D&D 3.5e rules
+- Character sheets are automatically maintained and human-editable
+- Permission system correctly enforces DM/player access controls
+- Players receive clear turn guidance with available actions
+- AI DM generates engaging narrative that responds to player choices
+- Session state persists correctly across saves/loads
+- CLI test harness validates all agent interactions
+- System is ready for REST/WebSocket API layer integration
 
 ---
 
 ## Scope
 
 ### In Scope
-[What is included in this project]
+**Phase 1 - Backend Foundation (Current Focus):**
+- Node.js/TypeScript implementation
+- Five specialized AI agents with LLM integration (Claude API)
+- Local file-based persistence (project/user_resources/)
+- Character sheet schema and templates
+- Session state management
+- Permission system
+- D&D 3.5e rules engine (core combat, checks, saves, basic spells)
+- CLI test harness for validation
+- JSON schema validation utilities
+- Optimistic locking for file writes
+- Metadata system for future cloud sync compatibility
+
+**Phase 2 - API Layer (Next):**
+- REST API endpoints
+- WebSocket server for real-time gameplay
+- Session management with shareable links
+- Multi-session support
+
+**Phase 3 - Frontend (Future):**
+- Web interface
+- Mobile-responsive design
+- Group chat and private messaging
+- Character setup wizard
+- Voice integration
 
 ### Out of Scope
-[What is explicitly NOT included]
+- Voice input/output (deferred to Phase 3)
+- Cloud storage/sync (local-only for now, but metadata prepared)
+- Full D&D 3.5e content (using SRD-derived rules, no copyrighted material)
+- More than 6 players per session
+- Real-time voice chat between players
+- Advanced spell system beyond basics
+- Character creation wizard (Phase 3)
+- Payment/monetization system
 
 ---
 
 ## Timeline (Optional)
 
 ### Target Completion
-[Date or timeframe, if applicable]
+Phase 1 (Backend): 2-3 weeks
+Phase 2 (API): 1-2 weeks
+Phase 3 (Frontend): 3-4 weeks
 
 ### Key Milestones
-- [Milestone 1]: [Target date]
-- [Milestone 2]: [Target date]
-- [Milestone 3]: [Target date]
+- **Week 1**: Agent architecture, schemas, and stubs complete
+- **Week 2**: Working combat simulation through CLI
+- **Week 3**: Full backend with persistence and permissions
+- **Week 4**: REST/WebSocket API layer
+- **Week 6**: Basic web interface
+- **Week 8**: Full featured web app with multiplayer
 
 ---
 
 ## Notes
 
-[Any additional context about your goals]
+**Technology Stack:**
+- Backend: Node.js with TypeScript
+- AI: Claude API (Anthropic) for LLM-powered agents
+- Storage: Local markdown files with YAML metadata
+- API: REST + WebSocket for real-time
+- Frontend: TBD (React/Vue/Svelte)
 
----
+**Agent Architecture:**
+- **Coordinator**: Orchestrates all agents, maintains session state, enforces permissions
+- **DM Agent**: Generates narrative, interprets player actions, guides gameplay
+- **Rules Engine**: Enforces D&D 3.5e mechanics, resolves dice rolls and checks
+- **Player Agent**: Manages individual character sheets, proposes edits
+- **Persistence Agent**: Handles all file I/O with optimistic locking
 
-## AI Update Instructions
-
-### When to Update This File
-- **First-time setup**: When user describes their project for the first time
-- **Goal changes**: When user explicitly changes or adds objectives
-- **Scope changes**: When project scope is redefined
-- **User request**: When user asks to update goals
-
-### How to Update
-1. Ask user for clarification if goals are ambiguous
-2. Fill in relevant sections based on user's description
-3. Keep language clear and concise
-4. Preserve user's intent and wording when possible
-5. Leave sections blank if information not provided (don't make assumptions)
-
-### What NOT to Do
-- Don't invent goals the user hasn't mentioned
-- Don't change goals without user confirmation
-- Don't add technical details here (those go in project files)
-- Don't duplicate information from progress.md
+**Design Principles:**
+- Explicit player confirmation before character sheet changes
+- Human-editable files in clear markdown format
+- Metadata prepared for future cloud sync
+- Modular architecture for easy feature additions
+- Cost-effective LLM usage (single process, specialized prompts)
 
 ---
 
